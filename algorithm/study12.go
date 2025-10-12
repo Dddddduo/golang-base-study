@@ -16,16 +16,17 @@ func main() {
 	scanner.Scan()
 	n, _ := strconv.Atoi(scanner.Text())
 
-	x := make([]int, n)
+	x := make([]int64, n)
 	scanner.Scan()
 	xStrs := strings.Fields(scanner.Text())
 	for i := 0; i < n; i++ {
-		x[i], _ = strconv.Atoi(xStrs[i])
+		val, _ := strconv.ParseInt(xStrs[i], 10, 64)
+		x[i] = val
 	}
 
 	y := make([]int64, n)
-
 	for i := 0; i < n; i++ {
+		y[i] = 0
 		for j := i + 1; j < n; j++ {
 			if x[j] > x[i] {
 				y[i] = int64(j + 1)
